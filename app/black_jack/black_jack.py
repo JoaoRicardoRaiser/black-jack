@@ -8,7 +8,7 @@ class BlackJack:
         self._player = player
         self._dealer = dealer
 
-    def welcome_mensage(self):
+    def welcome_message(self):
         print("=" * 60)
         print(f"Seja bem vindo ao Black Jack {self._player.get_name()} !!!")
         print("=" * 60)
@@ -19,7 +19,6 @@ class BlackJack:
         self._player.receive_card(selected_card)
         self._dealer.remove_card_from_deck(selected_card)
         return self.show_retired_card(selected_card)
-
 
     def addict_score_player(self, card: Card):
         if (card._value == 'Q'
@@ -43,8 +42,9 @@ class BlackJack:
     def dealer_quest(self):
         return self._dealer.want_continue(self._player.get_hand())
 
-    def show_retired_card(self, card: Card):
-            print(f'A carta retirada foi: {card.get_name()}')
+    @staticmethod
+    def show_retired_card(card: Card):
+        print(f'A carta retirada foi: {card.get_name()}')
 
     def show_score_player(self):
         print(f'Sua pontuação é: {self._player.score}')
@@ -63,3 +63,15 @@ class BlackJack:
         list_card_names = list_card_names.replace('[', '')
         list_card_names = list_card_names.replace(']', '')
         print(f"Suas cartas são: {list_card_names}")
+
+    @staticmethod
+    def farewell_message(black_jack):
+        print(("=" * 60))
+        black_jack.check_result()
+        print(("=" * 60))
+        print('Obrigado por utilizar este produto')
+        print(("=" * 60), '\n')
+        input('Pressione Enter para finalizar')
+
+
+

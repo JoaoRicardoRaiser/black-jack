@@ -2,16 +2,21 @@ from app.black_jack.black_jack import BlackJack
 from app.dealer.dealer import Dealer
 from app.player.player import Player
 
+
+def instance_all():
+    player = Player(input("Meu caro, digite seu nome: "))
+    dealer = Dealer()
+    object_black_jack = BlackJack(player, dealer)
+    return object_black_jack
+
+
 class Start:
 
+    @staticmethod
     def execute(self):
-        player = Player(input("Meu caro, digite seu nome: "))
-        dealer = Dealer()
+        black_jack = instance_all()
 
-        black_jack = BlackJack(player, dealer)
-
-        black_jack.welcome_mensage()
-
+        black_jack.welcome_message()
         while black_jack.quantity_cards() != 0:
             if black_jack.dealer_quest():
                 black_jack.dealer_delivering_card()
@@ -21,8 +26,4 @@ class Start:
             else:
                 break
 
-        print(("="*60),)
-        black_jack.check_result()
-        print(("="*60),)
-        print('Obrigado por utilizar este produto')
-        print(("="*60))
+        black_jack.farewell_message(black_jack)
