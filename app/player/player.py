@@ -7,7 +7,7 @@ class Player:
         self._hand = []
         self.score = 0
 
-    def receive_card(self, card):
+    def receive_card(self, card: Card):
         self._hand.append(card)
 
     def get_hand(self):

@@ -4,10 +4,10 @@ from app.cards.cards import Card
 
 class Dealer:
     def __init__(self):
-        self._deck = self.deck_black_jack(self)
+        self._deck = self.deck_black_jack()
 
     @staticmethod
-    def deck_black_jack(self):
+    def deck_black_jack():
         black_jack_deck = []
         value_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Q', 'J', 'K']
         suit_list = ['Paus', 'Copas', 'Espadas', 'Ouros']
@@ -18,25 +18,25 @@ class Dealer:
         return black_jack_deck
 
 
-    def want_continue(self):
-        answer = input("Você ainda quer jogar? S/N\n")
+    def want_continue(self, cards_in_hand_player):
+        null = 0
+        if len(cards_in_hand_player) == null:
+            answer = input("Quer retirar uma carta? S/N\n")
+        else:
+            answer = input("Quer uma nova carta? S/N\n")
         if answer == 'S' or answer == 's':
             return True
 
     def shuffle(self):
         random.shuffle(self._deck)
 
-    def get_card(self):
+    def get_card_from_deck(self):
         self.shuffle()
-        selected_card = random.choice(self._deck)
-        self._deck.remove(selected_card)
-        return selected_card
+        return self._deck[0]
 
-        #JOGAO
-        # self.shuffle()
-        # selected_card = random.choice(self._deck())
-        # self._deck.remove(selected_card)
-        # return selected_card
+    def remove_card_from_deck(self, card: Card):
+        self._deck.remove(card)
+
 
     def get_deck(self):
         return self._deck
