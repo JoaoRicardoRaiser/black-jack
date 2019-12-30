@@ -28,7 +28,7 @@ class BlackJack:
         else:
             self._player.score += card.get_value()
 
-    def check_result(self):
+    def show_result_message(self):
         if self._player.score > 21:
             print('Resultado: Puxa vida, você perdeu\n'
                   'Tente novamente')
@@ -40,7 +40,7 @@ class BlackJack:
                   ' :( ')
 
     def dealer_quest(self):
-        return self._dealer.want_continue(self._player.get_hand())
+        return self._dealer.want_continue(self._player)
 
     @staticmethod
     def show_retired_card(card: Card):
@@ -55,6 +55,10 @@ class BlackJack:
     def quantity_cards(self):
         return len(self._dealer.get_deck())
 
+    def check_if_has_result(self):
+        if self._player.score == 21 or self._player.score > 21:
+            return True
+
     def show_cards_in_hand_player(self):
         list_card_names = []
         for card in self._player.get_hand():
@@ -64,10 +68,13 @@ class BlackJack:
         list_card_names = list_card_names.replace(']', '')
         print(f"Suas cartas são: {list_card_names}")
 
+
+
+
     @staticmethod
     def farewell_message(black_jack):
         print(("=" * 60))
-        black_jack.check_result()
+        black_jack.show_result_message()
         print(("=" * 60))
         print('Obrigado por utilizar este produto')
         print(("=" * 60), '\n')

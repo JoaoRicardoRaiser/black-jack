@@ -13,11 +13,13 @@ def instance_all():
 class Start:
 
     @staticmethod
-    def execute(self):
+    def execute():
         black_jack = instance_all()
 
         black_jack.welcome_message()
         while black_jack.quantity_cards() != 0:
+            if black_jack.check_if_has_result():
+                break
             if black_jack.dealer_quest():
                 black_jack.dealer_delivering_card()
                 black_jack.show_quantity_cards()
@@ -25,5 +27,7 @@ class Start:
                 black_jack.show_score_player()
             else:
                 break
+
+
 
         black_jack.farewell_message(black_jack)

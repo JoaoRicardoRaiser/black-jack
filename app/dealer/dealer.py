@@ -1,5 +1,6 @@
 import random
 from app.cards.cards import Card
+from app.player.player import Player
 
 
 class Dealer:
@@ -17,21 +18,17 @@ class Dealer:
                 black_jack_deck.append(card)
         return black_jack_deck
 
-
-    def want_continue(self, cards_in_hand_player):
-        null = 0
-        if len(cards_in_hand_player) == null:
+    def want_continue(self, player: Player) -> bool:
+        if not player.you_have_cards_in_hand():
             answer = input("Quer retirar uma carta? S/N\n")
         else:
             answer = input("Quer uma nova carta? S/N\n")
         if answer == 'S' or answer == 's':
             return True
-
-    def shuffle(self):
-        random.shuffle(self._deck)
+        return False
 
     def get_card_from_deck(self):
-        self.shuffle()
+        random.shuffle(self._deck)
         return self._deck[0]
 
     def remove_card_from_deck(self, card: Card):
