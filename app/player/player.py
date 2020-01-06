@@ -13,10 +13,6 @@ class Player:
     def get_hand(self):
         return self._hand
 
-    def show_your_hand(self):
-        for i in self._hand:
-            print(self.hand[i])
-
     def show_your_score(self):
         return self.score
 

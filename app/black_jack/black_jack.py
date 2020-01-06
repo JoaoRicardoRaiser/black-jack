@@ -21,9 +21,9 @@ class BlackJack:
         return self.show_retired_card(selected_card)
 
     def addict_score_player(self, card: Card):
-        if (card._value == 'Q'
-                or card._value == 'J'
-                or card._value == 'K'):
+        if (card.get_value() == 'Q'
+                or card.get_value() == 'J'
+                or card.get_value() == 'K'):
             self._player.score += 10
         else:
             self._player.score += card.get_value()

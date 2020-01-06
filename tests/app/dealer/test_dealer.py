@@ -151,10 +151,19 @@ class TestDealer(unittest.TestCase):
 
     @patch('app.dealer.dealer.Card')
     def test_should_remove_card_from_deck(self, card_mock):
-
         card_mock = MagicMock(return_value='1 de Paus')
         dealer = Dealer()
-        dealer._deck = ['1 de copas', '2 de Copas']
+        dealer._deck = [card_mock, '2 de Copas']
         dealer.remove_card_from_deck(card_mock)
         self.assertEqual(['2 de Copas'], dealer._deck)
+
+
+
+    def test_get_deck_from_dealer(self):
+        dealer = Dealer()
+        dealer._deck = ['1 de Paus', '2 de Copas']
+        self.assertEqual(dealer._deck, dealer.get_deck())
+
+
+
 
